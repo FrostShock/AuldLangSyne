@@ -22,8 +22,8 @@ local defaults_profile = {
 		pvpnum = false,
 		guild = true,
 		color = {
-			name = true,
-			class = true,
+			name = false,
+			class = false,
 		},
 		compact = false,
 		clevels = true,
@@ -199,10 +199,10 @@ function AuldLangSyne:OnInitialize()
 		self.guildbuttons[i].type = "guild"
 	end
 
-	self.colors_sex = {
-		[MALE] = "90b0f0",
-		[FEMALE] = "f090c4",
-	}
+-- 	self.colors_sex = {
+--		[MALE] = "90b0f0",
+--		[FEMALE] = "f090c4",
+--	}
 
 	self.editFrame = self:CreateEditFrame()
 
@@ -377,19 +377,21 @@ function AuldLangSyne:ShowFriends()
 					end
 					local nlt = (connected and "" or "|cff999999")..(self.db.profile.show.color.class and ("|cff"..BC:GetHexColor(class)) or "")..name..(self.db.profile.show.color.class and "|r" or "")..((self.db.profile.show.color.name and self.db.realm.chars[name].sex) and "|r" or "")..(connected and "" or "|cff999999")..(self.db.profile.show.pvp and (" / R"..pvprank) or "")..(self.db.profile.show.clevels and (" / L"..self.db.realm.chars[name].level) or "")..((self.db.profile.show.guild and self.db.realm.chars[name].guild) and (" / "..self.db.realm.chars[name].guild) or "")..(connected and (" / "..area..((status ~= "") and " ("..status..")" or "")) or (lastseen and (" / "..lastseen)))
 					local it = "|cff999999"..((self.db.realm.chars[name].note and (self.db.realm.chars[name].note ~= "")) and self.db.realm.chars[name].note or "")
-
-					nameLocationText:SetText(nlt)
-					infoText:SetText(it)
+					
+					-- Disable friends hookup inside friends list, ~Disq, Darrowshire
+--					nameLocationText:SetText(nlt)
+--					infoText:SetText(it)
 				else
 					local nlt = ((self.db.profile.show.color.name and self.db.realm.chars[name].sex) and ("|cff"..self.colors_sex[self.db.realm.chars[name].sex]) or "")..(self.db.profile.show.pvp and rank or "")..name..((self.db.profile.show.color.name and self.db.realm.chars[name].sex) and "|r" or "")..(connected and "" or ("|cff999999 - "..lastseen..L[" ago"]))
 					local it = race..(self.db.profile.show.color.class and ("|cff"..BC:GetHexColor(class)) or "")..class..(self.db.profile.show.color.class and "|r" or "")..(connected and "" or "|cff999999")..((self.db.profile.show.guild and self.db.realm.chars[name].guild) and (" <"..self.db.realm.chars[name].guild..">") or "")
-
-					if connected then
-						nameLocationText:SetText(format(FRIENDS_LIST_TEMPLATE, nlt, area, status))
-					else
-						nameLocationText:SetText(format(FRIENDS_LIST_OFFLINE_TEMPLATE, nlt))
-					end
-					infoText:SetText(format(FRIENDS_LEVEL_TEMPLATE, level, it))
+					
+					-- Disable friends hookup inside friends list, ~Disq, Darrowshire
+--					if connected then
+--						nameLocationText:SetText(format(FRIENDS_LIST_TEMPLATE, nlt, area, status))
+--					else
+--						nameLocationText:SetText(format(FRIENDS_LIST_OFFLINE_TEMPLATE, nlt))
+--					end
+--					infoText:SetText(format(FRIENDS_LEVEL_TEMPLATE, level, it))
 				end
 				-- Make sure we're not overflowing
 				if nameLocationText:GetWidth() > 275 then
