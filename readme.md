@@ -1,4 +1,5 @@
 This is a fork of the project https://github.com/Road-block/AuldLangSyne
+
 It simply disables the class colors for Friends List because it's bugged. Thanks to Disq @ Darrowsire for nuking the hook part.
 
 \"Should auld acquaintance be forgot, you'll need something to remember them by.\"
